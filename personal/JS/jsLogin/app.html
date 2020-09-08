@@ -1,0 +1,81 @@
+jQuery(document).ready(function ($) {
+
+	//===== toggleButton =====//
+	var loginBox = $('.loginBox').offset();
+	var textBox = $('.textBox');
+	var ending_right = ($(window).width() - (textBox.offset().left + textBox.outerWidth()));
+	$('.textBox').css({'right': ending_right + 'px'});
+
+	
+	
+
+	$('ul#accordion a.heading').click(function() {
+		var mainThis = $(this);
+		$(this).css('outline','none');
+		if($(this).parent().hasClass('current')) {
+			$(this).siblings('.showBox').fadeOut('slow',function() {
+				$(this).parent().removeClass('current');
+				$('.loginBox').stop().animate({ left: loginBox.left - 10 }, 500);
+				$('ul#accordion').stop().animate({ width: '80%' }, 500);
+				$('.textBox').stop().animate({ right: ending_right }, 500);
+				$(this).parent().stop().css({'background-position':'left 30px'});
+			});
+		} else {
+			$('ul#accordion li.current .showBox').fadeOut('slow',function() {
+				//$('.loginBox').stop().animate({ left: loginBox.left - 10 }, 500);
+				//$('ul#accordion').stop().animate({ width: '80%' }, 500);
+				//$('.textBox').stop().animate({ right: ending_right }, 500);
+				$(this).parent().removeClass('current').css({'background-position':'left 30px'});
+			});
+			
+			$('.loginBox').stop().animate({ left: loginBox.left + 300 }, 500);
+			$('ul#accordion').stop().animate({ width: '50%' }, 500);
+			$('.textBox').stop().animate({ right: ending_right - 310 }, 500,function(){
+				mainThis.siblings('.showBox').fadeIn('slow');
+				mainThis.parent().toggleClass('current').css({'background-position':'left -60px'});
+			});
+		}
+		return false;
+	});
+
+	
+	/*$(".textBox a").click(function(){
+		$(".showBox").stop().fadeOut();
+		$(".textBox a").parent().stop().css({'background-position':'left 45px'});
+	});
+
+	$(".textBox a").toggle(function(){
+		var mainThis = $(this);
+		$('.loginBox').stop().animate({ left: loginBox.left + 300 }, 500);
+		
+		$('.textBox').stop().animate({ right: ending_right - 310 }, 500,function(){
+			mainThis.next().stop().fadeIn();
+			mainThis.parent().stop().css({'background-position':'left -49px'});
+		});
+		//$(this).next('div').stop().fadeIn();
+	},function(){
+		var mainThis = $(this);
+		mainThis.next().stop().fadeOut(function(){
+			$('.loginBox').stop().animate({ left: loginBox.left - 10 }, 500);
+			$('.textBox ul').stop().animate({ width: '80%' }, 500);
+			$('.textBox').stop().animate({ right: ending_right }, 500);
+			mainThis.parent().stop().css({'background-position':'left 45px'});
+		});
+	});*/
+	
+	$("a.tablogin").click(function(){
+		$(".banner a").attr('href','http://mashreq.com/sn');
+		$(".banner a img").attr('src','/B001/images/imagesLogin/banners/MOL_SNAPP.png');
+	});
+	
+	$("a.tabprofile").click(function(){
+		$(".banner a").attr('href','http://mashreq.com/sn');
+		$(".banner a img").attr('src','/B001/images/imagesLogin/banners/MOL_SNAPP.png');
+	});
+	
+	$("a.tabforget").click(function(){
+		$(".banner a").attr('href','http://mashreq.com/sn');
+		$(".banner a img").attr('src','/B001/images/imagesLogin/banners/MOL_SNAPP.png');
+	});
+	
+});

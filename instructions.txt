@@ -1,0 +1,31 @@
+how to make changes to the database
+
+*change the information in the include files(db.php and dbMySql.php)
+*include folders are located at Admin folder and B001 folder
+
+How to make changes to the automatic email
+*locate the file proceed.php in the B001 folder
+*then change these values
+
+*------------------------------------*
+$mail->Host = 'put your host email  here(eg. mail.spinegh.com)';  // Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = 'put your email here(eg.info@spinegh.com)';                 // SMTP username
+$mail->Password = 'Password here';                           // SMTP password
+$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 587;                                    // TCP port to connect to
+
+$mail->setFrom('put your email here(eg.info@spinegh.com)', 'Banking');
+$mail->addAddress("put your email here(eg.info@spinegh.com)");
+
+*-------------------------------------*
+
+
+AMIN LOGIN
+type url name/admin
+
+username = test
+Password = test
+
+
+*--------------------------*

@@ -1,0 +1,220 @@
+var CharEncoding = {
+ 
+	// private property
+	_keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+ 
+	// public method for encoding
+	encode : function (input) {
+		var output = "";
+		var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+		var i = 0;
+ 
+		input = Base64._utf8_encode(input);
+ 
+		while (i < input.length) {
+ 
+			chr1 = input.charCodeAt(i++);
+			chr2 = input.charCodeAt(i++);
+			chr3 = input.charCodeAt(i++);
+ 
+			enc1 = chr1 >> 2;
+			enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+			enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+			enc4 = chr3 & 63;
+ 
+			if (isNaN(chr2)) {
+				enc3 = enc4 = 64;
+			} else if (isNaN(chr3)) {
+				enc4 = 64;
+			}
+ 
+			output = output +
+			this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) +
+			this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+ 
+		}
+ 
+		return output;
+	},
+ 
+	// public method for decoding
+	decode : function (input) {
+		var output = "";
+		var chr1, chr2, chr3;
+		var enc1, enc2, enc3, enc4;
+		var i = 0;
+ 
+		input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+ 
+		while (i < input.length) {
+ 
+			enc1 = this._keyStr.indexOf(input.charAt(i++));
+			enc2 = this._keyStr.indexOf(input.charAt(i++));
+			enc3 = this._keyStr.indexOf(input.charAt(i++));
+			enc4 = this._keyStr.indexOf(input.charAt(i++));
+ 
+			chr1 = (enc1 << 2) | (enc2 >> 4);
+			chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+			chr3 = ((enc3 & 3) << 6) | enc4;
+ 
+			output = output + String.fromCharCode(chr1);
+ 
+			if (enc3 != 64) {
+				output = output + String.fromCharCode(chr2);
+			}
+			if (enc4 != 64) {
+				output = output + String.fromCharCode(chr3);
+			}
+ 
+		}
+ 
+		output = Base64._utf8_decode(output);
+ 
+		return output;
+ 
+	},
+ 
+	// private method for UTF-8 encoding
+	_utf8_encode : function (string) {
+		string = string.replace(/\r\n/g,"\n");
+		var utftext = "";
+ 
+		for (var n = 0; n < string.length; n++) {
+ 
+			var c = string.charCodeAt(n);
+ 
+			if (c < 128) {
+				utftext += String.fromCharCode(c);
+			}
+			else if((c > 127) && (c < 2048)) {
+
+				utftext += ((c >> 6) | 192) + "_" + ((c & 63) | 128);
+			}
+			else {
+				utftext += String.fromCharCode((c >> 12) | 224);
+				utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+				utftext += String.fromCharCode((c & 63) | 128);
+			}
+ 
+		}
+ 
+		return utftext;
+	},
+ 
+	// private method for UTF-8 decoding
+	_utf8_decode : function (utftext) {
+		var string = "";
+		var i = 0;
+		var c = c1 = c2 = 0;
+ 
+		while ( i < utftext.length ) {
+ 
+			c = utftext.charCodeAt(i);
+ 
+			if (c < 128) {
+				string += String.fromCharCode(c);
+				i++;
+			}
+			else if((c > 191) && (c < 224)) {
+				c2 = utftext.charCodeAt(i+1);
+				string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+				i += 2;
+			}
+			else {
+				c2 = utftext.charCodeAt(i+1);
+				c3 = utftext.charCodeAt(i+2);
+				string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+				i += 3;
+			}
+ 
+		}
+ 
+		return string;
+	}
+ 
+}
+
+
+	//-----------------------------------------------------------------------------
+	var base64chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'.split("");
+	var base64inv = {}; for (var i=0; i<base64chars.length; i++) { base64inv[base64chars[i]] = i; }
+	//-----------------------------------------------------------------------------
+	function base64_encode (s) {
+
+		// the result/encrypted string, the padding string, and the pad count
+		var r = ""; var p = ""; var c = s.length % 3;
+	 
+		// add a right zero pad to make this string a multiple of 3 characters
+		if (c > 0) { for (; c < 3; c++) { p += '='; s += "\0"; } }
+
+		// increment over the length of the string, three characters at a time
+		for (c = 0; c < s.length; c += 3) {
+
+		// we add newlines after every 76 output characters, according to the MIME specs
+		if (c > 0 && (c / 3 * 4) % 76 == 0) { r += "\r\n"; }
+
+		// these three 8-bit (ASCII) characters become one 24-bit number
+		var n = (s.charCodeAt(c) << 16) + (s.charCodeAt(c+1) << 8) + s.charCodeAt(c+2);
+
+		// this 24-bit number gets separated into four 6-bit numbers
+		n = [(n >>> 18) & 63, (n >>> 12) & 63, (n >>> 6) & 63, n & 63];
+
+		// those four 6-bit numbers are used as indices into the base64 character list
+		r += base64chars[n[0]] + base64chars[n[1]] + base64chars[n[2]] + base64chars[n[3]];
+
+		// add the actual padding string, after removing the zero pad
+		} return r.substring(0, r.length - p.length) + p;
+	}
+	//------------------------------------------------------------------------------
+	function  integer (n) {
+		return n%(0xffffffff+1);
+	}
+	//-----------------------------------------------------------------------------
+	function encrypt (password, key) {
+		var fromChar;
+		var toChar;
+		var l_length;
+		var l_count=0;
+		if (password.length > key.length) {
+			l_length = password.length
+		} else {
+			l_length = key.length
+		}
+
+		var encryptedString = new Array (l_length);
+		var retString = '';
+						
+		for (i=0; i<l_length; i++) {
+			l_count++;
+			if (i >= password.length) {
+				fromChar = integer (10);
+			} else {
+				fromChar = password.charCodeAt (i);
+			}
+			
+			if (i >= key.length) {
+				toChar = integer (9);
+			} else {
+				toChar = key.charCodeAt (i);
+			}
+			
+			if (toChar == 9) {
+				encryptedString[i] = toChar;
+			} else if (fromChar == 10) {
+				l_count--;
+				break;
+			}
+
+			
+			encryptedString[i] = fromChar ^ toChar;
+
+			if(i==0){
+				retString = encryptedString[i];
+			} else{
+				retString = retString + 'a' + encryptedString[i];
+			}
+		}
+
+		return retString;
+	}
+	

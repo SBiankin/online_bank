@@ -1,0 +1,148 @@
+/* Base maincolor #213141 - #03997e */
+@charset "utf-8";
+/*@import url("../fonts/fonts.css");*/
+@import url("font-icons/font-icons.css");
+/* end of Base */
+
+/* body */
+body { position: relative; background: #fff; font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif; color: #fff; overflow: hidden; font-size: 12px; line-height: normal; }
+.noMargin { margin: 0px !important; }
+.rcorner { -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;}
+.left-corner { -webkit-border-radius: 0 4px 4px 0; -moz-border-radius: 0 4px 4px 0; border-radius: 0 4px 4px 0; }
+.right-corner { -webkit-border-radius: 4px 0 0 4px; -moz-border-radius: 4px 0 0 4px; border-radius: 4px 0 0 4px; }
+.bottom-corner { -webkit-border-radius: 0 0 4px 4px; -moz-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px; }
+.top-corner { -webkit-border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0; }
+.positionRelative { position: relative; }
+.container-fluid { max-width: 1200px; margin: 0 auto; position: relative; }
+/* end of body */
+
+/* header */
+.header {  position: relative; top: 0px; left: 0px; z-index: 400; height: 0px; width: 100%; border-bottom: 0px #121317 solid; padding-top: 0px; margin-bottom: 0px; }
+/* end of header */
+
+/* mainSection */
+.mainSection { display: block; position: relative; z-index: 300; width: 100%; overflow: hidden; }
+.mainSection { position: fixed; width: 100%; height: 100%; overflow: hidden; }
+
+.textBox { position: absolute; top: 12%; left: 0; right: 0; background: background: #2042eb; -webkit-border-radius: 0 8px 8px 0; -moz-border-radius: 0 8px 8px 0; border-radius: 0 8px 8px 0;}
+.textBox { right: 65%; text-align: right; height: 500px; }
+.textBox h1 { font-size: 28px; }
+.textBox p { margin: 10px 0; font-size: 13px; line-height: 13px; }
+
+.inner-textBox { padding: 25px; height: 450px; }
+.textBox .logo { margin-bottom: 0px; }
+.textBox .logo span { display: block; font-size: 20px; margin-top: 15px; }
+.moreText { overflow: hidden; }
+.textBox ul { margin: 0px; width: 80%; overflow: hidden; float: right; }
+.textBox ul li { list-style: none; background: url('../../images/imagesLogin/plus-bg.html') no-repeat left 30px; 
+-moz-transition: background-position .3s ease;
+-o-transition: background-position .3s ease;
+transition: background-position .3s ease;}
+.textBox ul li a { display: block; text-decoration: none; color: #fff; font-size: 18px; padding-top: 20px; margin-top: 15px; border-top: 1px #ffdfaf solid; }
+.textBox ul li a:hover { color: #fff; }
+.textBox ul li a i { font-size: 35px; line-height: normal; margin-left: 5px; }
+.textBox ul li:first-child a { border-top: 0px #fff solid; }
+.nav-tabs>li>a { background : #f60; color: #fff; }
+
+.loginBox { position: absolute; top: 12%; left: 0; right: 0; height: 15em; }
+.loginBox { left: 35%; text-align: left; height: 550px; margin-left: 10px; }
+.loginBox .innerloginBox { position: relative; width: 420px;  float: left; }
+.loginBox .nav { margin: 0px; }
+.loginBox .tab-content { padding: 15px; background: #fff;  height: 258px; overflow: hidden; }
+.loginBox form { margin: 0px; }
+.loginBox input[type="text"], input[type="password"] { border-width: 1px; display: block; text-indent: 10px; padding: 5px 0; color: #333; background: #f1f1f1; width: 95%; }
+.loginBox label { color: #333; cursor: default; }
+.loginBox .btn-submit { background: #2042eb; border: 0px; padding: 7px 30px; font-size: 18px; color: #fff; margin: 0px 0; float: right; }
+
+.loginBox .note { cursor: default; margin: 0px; margin-top: 10px; }
+
+.banner { display: block; margin-top: 10px; }
+.banner a { display: block; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; overflow: hidden;  }
+
+.showBox { display: none; position: absolute; left: 40px; top: 40px; padding-right: 20px; border-right: 1px #ffdfaf solid; width: 40%; height: 85%; text-align: left; }
+.showBox p { margin: 10px 0; font-size: 15px; line-height: 18px; }
+.btn-more { background: #2064c0; border: 0px !important; padding: 6px 20px !important; font-size: 14px !important; color: #fff; margin: 10px 10px 0 0; float: left; }
+.btn-more:hover { background: #3c7dd4; }
+.btn-more i { font-size: 14px !important; }
+/* end of mainSection */
+
+
+.loginBox .tab-content { -webkit-border-radius: 0 8px 8px 8px; -moz-border-radius: 0 8px 8px 8px; border-radius: 0 8px 8px 8px; }
+.nav-tabs { border: 0px; }
+.nav-tabs>li { margin: 0px; }
+.nav-tabs>li>a:hover { color: #333; }
+
+
+
+/* more content */
+.more-btn { display: block; overflow: hidden; }
+.more-btn h1 { background: url('../../images/login-images/dots.gif') repeat-x left 12px; padding: 0px; margin: 0px; font-size: 18px; color: #f60; line-height: normal; margin-bottom: 15px; }
+.more-btn h1 span { background: #fff; padding-right: 10px; }
+.more-btn span.text-1  { display: block; padding: 0px; margin: 0px; font-size: 12px; color: #666; line-height: 14px; margin-top: 5px; }
+.more-btn span.text-2  { display: block; padding: 0px; margin: 0px; font-size: 12px; color: #F88614; line-height: 14px; margin-top: 5px; font-weight: bold; }
+
+.reg-now {  }
+.reg-now h1 span { background: #fff; }
+.reg-now .steps { position: absolute; top: 2px; line-height: normal; left: 3px;  font-size: 60px;  color: #f60; }
+
+.reg-now .btn-left { position: relative; display: block; margin-bottom: 10px; padding: 10px 10px 10px 45px; background: #E7E7E7; margin-right: 10px; }
+.reg-now .btn-left:hover { background: #f90; color: #fff; cursor: pointer; padding: 10px 10px 10px 45px; text-decoration: none; }
+.reg-now .btn-left:hover .steps { color: #fff; }
+.reg-now .btn-left:hover span.text-1  { color: #fff; }
+.reg-now .btn-left:hover span.text-2  { color: #fff; }
+
+.reg-now .btn-right { position: relative; display: block; padding: 10px 10px 10px 45px; background: #E7E7E7; }
+.reg-now .btn-right:hover { background: #f90; color: #fff; cursor: pointer; padding: 10px 10px 10px 45px; text-decoration: none; }
+.reg-now .btn-right:hover .steps { color: #fff; }
+.reg-now .btn-right:hover span.text-1  { color: #fff; }
+.reg-now .btn-right:hover span.text-2  { color: #fff; }
+
+.btn-left, .btn-right { float: left; width: 34%; height: 80px; }
+
+.forgot { position: relative; display: block; margin-bottom: 10px; background: #fff; border-color: #ddd;  }
+.forgot  h1 { color: #2753c2; }
+.forgot h1 span { background: #fff; }
+.forgot span.text-1 { margin-bottom: 0px; margin-top: 5px; padding: 3px 0; float: left; }
+.forgot span.text-1 a { text-decoration: underline; color: #559bd6; }
+.forgot span.text-1 span { color: #559bd6; }
+.content-userid, .content-password { float: left; margin-left: 10px; margin-bottom: 10px;  }
+.more-btn .btn-submit { background: #f90; border: 0px; padding: 4px 20px; font-size: 12px; color: #fff; margin: 0px 0; float: none; }
+
+
+/* top_login_menu */
+.top_login_menu { margin: 10px 0; }
+.top_login_menu ul { overflow: hidden; margin: 0 10px; padding: 0px; display: block;  }
+.top_login_menu ul li { float: left; list-style: none;  }
+.top_login_menu ul li a { display: block; font-size: 13px; text-decoration: none; border-left: 1px #fff solid; padding: 0 10px; color: #fff; line-height: 13px; }
+.top_login_menu ul li:first-child a { border-left: 0px #959595 solid; padding-left: 0px; }
+.top_login_menu ul li a:hover { text-decoration: underline; } 
+/* end of top_login_menu */
+
+/* Keyboard css */
+button.keypad-trigger { width: 25px; padding: 0px; }
+img.keypad-trigger { margin: 2px; vertical-align: middle; }
+.keypad-popup, .keypad-inline, .keypad-key, .keypad-special { font-family: Arial,Helvetica,sans-serif; font-size: 14px;  }
+.keypad-popup { display: none; z-index: 1000; margin: 0; padding: 5px; background-color: #ddd; color: #000; border: 1px solid #a1a1a1; border-width: 5px 0px 1px 0px; margin-top: 5px; }
+.keypad-keyentry { display: none }
+.keypad-inline { background-color: #fff; border: 1px solid #888; }
+.keypad-disabled { position: absolute; z-index: 100; background-color: white; opacity: 0.5; filter: alpha(opacity=50); }
+.keypad-rtl { direction: rtl }
+.keypad-prompt { clear: both; text-align: center; }
+.keypad-prompt.ui-widget-header { margin: 0.125em }
+.keypad-row { clear: both; float: left; width: 100%; }
+.keypad-space { float: left; margin: 0.125em; width: 2em; }
+* html .keypad-space { /* IE6 */ margin: 0em; width: 2.25em; }
+.keypad-half-space { float: left; margin: 0.125em 0.0625em; width: 1em; }
+* html .keypad-half-space { /* IE6 */ margin: 0em; width: 1.125em; }
+.keypad-key, .keypad-special { float: left; margin: 0.125em; padding: 0.2em; width: 2em; background-color: #fff; text-align: center; cursor: pointer; border: 1px #DDD solid; }
+.keypad-key[disabled] { border: 0.125em outset }
+.keypad-key-down { }
+.keypad-special { width: 4.25em }
+.keypad-spacebar { width: 13.25em }
+.keypad-tab { width: 2em; display: none; }
+.keypad-clear, .keypad-back, .keypad-close, .keypad-shift { color: #fff; font-weight: bold; }
+.keypad-clear { background-color: #1e71d8; font-size: 13px; border: 1px #1858a7 solid; }
+.keypad-back { background-color: #1e71d8; font-size: 13px; border: 1px #1858a7 solid; }
+.keypad-close { background-color: #1e71d8; font-size: 13px; border: 1px #1858a7 solid; margin: 0px; margin-left: 4px; }
+.keypad-shift { background-color: #1e71d8; font-size: 13px; border: 1px #1858a7 solid; width: 6.6em; }
+.keypad-cover { display: none; display: block; position: absolute; z-index: -1; filter: mask(); top: -4px; left: -4px; width: 125px; height: 200px; }
